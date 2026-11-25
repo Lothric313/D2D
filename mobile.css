@@ -1,0 +1,195 @@
+@media (max-width: 720px), (max-width: 960px) and (max-height: 520px) and (hover: none) and (pointer: coarse) {
+  :root {
+    --gutter: clamp(18px, 5vw, 38px);
+    --section-heading: clamp(3rem, 11vw, 4.25rem);
+    scrollbar-gutter: auto;
+  }
+
+  body { font-size: 1.0625rem; }
+  h2 { margin-bottom: 20px; font-size: var(--section-heading); line-height: 1.08; }
+
+  .header { --control-height: 44px; --menu-duration: .22s; }
+  .header.is-scrolled::before {
+    position: absolute;
+    inset: 0;
+    content: '';
+    backdrop-filter: blur(8px);
+  }
+
+  .header::after {
+    position: fixed;
+    z-index: -1;
+    inset: 0;
+    background: rgb(0 0 0 / 24%);
+    content: '';
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--menu-duration) var(--ease);
+  }
+
+  .header:has(.nav.is-open)::after {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .header-inner { grid-template-columns: 1fr auto; }
+  .header .brand { width: clamp(86px, 26vw, 128px); }
+  .header .brand img:first-child { width: 100%; height: auto; }
+  .header .brand-outline, .header .header-book { display: none; }
+  .header .menu-toggle.glass, .header .nav.glass {
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .header .menu-toggle.glass { border-radius: 0; backdrop-filter: none; }
+  .menu-toggle span { width: 24px; height: 14px; border-width: 2px; background-size: 100% 2px; }
+  .header .nav.glass {
+    display: flex;
+    inset: calc(100% + 4px) 0 auto auto;
+    width: min(100%, 280px);
+    max-height: calc(100dvh - 64px);
+    overflow-y: auto;
+    padding: 10px;
+    border-radius: 16px;
+    backdrop-filter: blur(24px);
+    opacity: 0;
+    translate: 0 -8px;
+    visibility: hidden;
+    pointer-events: none;
+    animation: none;
+    transition:
+      opacity var(--menu-duration) var(--ease),
+      translate var(--menu-duration) var(--ease),
+      visibility var(--menu-duration) linear;
+  }
+
+  .header .nav.glass.is-open {
+    opacity: 1;
+    translate: 0 0;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .header .nav::before { content: none; }
+  .header .nav a { color: var(--text); font-size: 1rem; }
+  .header .nav a[aria-current] { background: transparent; box-shadow: none; font-weight: 800; }
+  .header .nav .nav-book { display: flex; justify-content: center; min-height: 48px; margin-top: 8px; border-radius: 10px; }
+
+  main { --muted: #dfd6d8; }
+  main::before {
+    position: absolute;
+    inset: 0 clamp(12px, 4vw, 30px) 0 auto;
+    width: 24%;
+    background: #a91828;
+    content: '';
+    pointer-events: none;
+  }
+
+  .speaker-track, .section > .stripe { display: none; }
+  .section {
+    align-items: start;
+    min-height: 0;
+    border-bottom: 0;
+    overflow: clip;
+  }
+
+  .section:not(.hero) { scroll-margin-block-start: 64px; }
+
+  .section-layout, .hero .section-layout, .about .section-layout, .services-catalog {
+    width: min(100% - var(--gutter) * 2, 680px);
+    padding-block: 38px 42px;
+  }
+
+  .section-copy, .services .section-copy, .reviews .section-copy { width: 100%; margin: 0; }
+  .hero .section-layout, .about .section-layout { --gutter: clamp(18px, 5vw, 38px); }
+  .hero { min-height: 100svh; }
+  .hero .section-layout {
+    grid-template-rows: auto minmax(104px, 1fr);
+    gap: clamp(12px, 3svh, 28px);
+    padding-block: clamp(76px, 12svh, 112px) 48px;
+  }
+
+  .hero-poster {
+    display: block;
+    justify-self: end;
+    width: min(76vw, 440px, 100%);
+    background: url('./assets/subwoofer.png') right center / contain no-repeat;
+    filter: drop-shadow(0 10px 12px rgb(0 0 0 / 36%));
+  }
+
+  .hero .hero-copy { display: block; }
+  .hero h1 { font-size: clamp(2.0625rem, 10.8vw, 4.125rem); line-height: 1.09; }
+  .hero-actions { margin-top: 16px; }
+  .hero-description { margin-bottom: 18px; font-size: 1.0625rem; }
+  .scroll-hint { bottom: 18px; font-size: .9375rem; }
+  main :is(h1 span:last-child, h2, .works-title-end)::after,
+  main .button-primary { box-shadow: 0 0 0 1px var(--ink); }
+
+  .services-layout { min-height: 0; align-content: start; }
+  .service-list { --service-row-height: 56px; }
+  .service.glass, .catalog-item.glass { background-color: rgb(27 22 23 / 87%); }
+  .service summary { padding-inline: 16px; font-size: 1.125rem; line-height: 1.3; }
+  .service-body { padding-inline: 16px 20px; }
+  .catalog-open, .catalog-back { width: 100%; }
+
+  .catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .catalog-item { padding: 8px; font-size: 1rem; }
+  .catalog-item strong, .catalog-item .price { padding-inline: 2px; }
+  .catalog-art { aspect-ratio: 1.7; }
+  .catalog-item .price { font-size: 1.125rem; }
+  .product-layout { grid-template-columns: minmax(0, 1fr); align-content: start; }
+  .product-art { aspect-ratio: 2; background-size: min(56%, 220px) auto; }
+
+  .about .section-layout { min-height: 0; grid-template-rows: auto auto auto; row-gap: 24px; }
+  .about h2 { font-size: var(--section-heading); }
+  .about .body-copy { max-width: 100%; margin-top: 14px; }
+  .about .good-place { font-size: 1.0625rem; }
+  .about-photos { position: relative; inset: auto; grid-row: 2; width: min(100%, 460px); max-width: none; margin: 0; }
+  .about .works-gallery { width: 100%; min-height: 0; grid-template: 'copy' auto 'deck' auto / minmax(0, 1fr); row-gap: 16px; }
+  .works-copy { text-align: start; }
+  .about .works-copy h2 { font-size: clamp(2.25rem, 8vw, 3.25rem); }
+  .works-note { font-size: 1.0625rem; line-height: 1.6; }
+  .works-gallery .card-swap { height: auto; min-height: clamp(155px, 51vw, 340px); }
+  .works-gallery .card-swap-card { background: linear-gradient(rgb(0 0 0 / 23%), rgb(0 0 0 / 23%)), var(--swap-tile); }
+  .works-gallery .card-swap-slot { box-shadow: 0 0 0 2px var(--ink), var(--swap-shadow); }
+  .card-swap-head { height: 34px; }
+  .card-swap-title { font-size: 24px; }
+
+  .reviews-head { --review-heading: var(--section-heading); flex-flow: column; align-items: start; gap: 12px; }
+  .reviews-head h2 { text-align: start; }
+  .review-score { height: 2.8rem; }
+  .review-rating-caption { font-size: .9375rem; }
+  .review-rating-caption strong, .review-list strong { font-size: 1.0625rem; }
+  .review-list li { padding-block: 14px; }
+  .review-row-stars { overflow: visible; stroke: var(--ink); stroke-width: 2.6; stroke-linejoin: round; paint-order: stroke fill; }
+  .review-list blockquote { font-size: 1.0625rem; line-height: 1.55; }
+  .reviews-all { justify-self: start; }
+
+  .contacts h2 { font-size: clamp(2.875rem, 11vw, 4.25rem); }
+  .contacts-title-end { display: inline-block; white-space: nowrap; }
+  .question-mark { overflow: visible; fill: var(--icon-red); stroke: var(--ink); stroke-width: 3; paint-order: stroke fill; }
+  .phones { font-size: clamp(1.4rem, 6vw, 2rem); }
+  .contacts .messengers, .work-hours { max-width: 440px; }
+  .messengers .button { font-size: 1rem; }
+  .work-hours h3 { font-size: 1.125rem; }
+  .work-hours dl { font-size: 1rem; }
+
+  .footer-inner { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 14px; font-size: 1rem; }
+  .footer-identity { grid-column: 1 / -1; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 12px; }
+  .footer .brand { width: clamp(84px, 27vw, 118px); }
+  .footer-identity .footer-button { min-height: 48px; padding-inline: 18px; color: white; background: #111011; border-color: #111011; font-weight: 750; }
+  .footer h2 { font-size: 1.625rem; }
+  .footer-studio { grid-column: 1 / -1; }
+  .footer-bottom p { font-size: .9375rem; }
+}
+
+@media (orientation: landscape) and (max-width: 960px) and (max-height: 520px) and (hover: none) and (pointer: coarse) {
+  .hero .section-layout { width: min(100% - var(--gutter) * 2, 860px); grid-template-rows: auto minmax(68px, 1fr); gap: 8px; padding-block: 70px 28px; }
+  .hero h1 { font-size: clamp(2rem, 5.2vw, 3.25rem); }
+  .hero h1 span { display: inline; }
+  .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 18px; margin-top: 10px; }
+  .hero-description { margin: 0; }
+  .hero-actions .button { min-height: 44px; }
+  .scroll-hint { bottom: 8px; }
+}

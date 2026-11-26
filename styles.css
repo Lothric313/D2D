@@ -349,15 +349,24 @@ html:has(dialog[open]) { overflow: hidden; scrollbar-gutter: auto; }
 .review-row-stars { display: block; width: clamp(76px, 12vw, 112px); }
 .review-list blockquote { grid-column: 1 / -1; color: var(--text); font-size: 1rem; line-height: 1.45; }
 .reviews-all { justify-self: end; margin-top: 12px; }
-.contacts { --anchor-y: 45%; }
-.contacts h2 { font-size: clamp(2.625rem, 5.25vw, 5.5rem); }
+.contacts { --anchor-y: 45%; --phone-block-gap: 20px; }
+.contacts h2 { margin-bottom: var(--phone-block-gap); font-size: clamp(2.625rem, 5.25vw, 5.5rem); }
 .contacts h2::after { content: none; }
 .contacts-title-end { display: contents; }
 .question-mark { display: inline-block; width: .44em; height: .8em; margin-inline-start: .07em; fill: var(--red); }
-.contacts address { font-style: normal; }
-.phones { display: grid; justify-items: start; gap: 4px; margin-bottom: 20px; font-size: clamp(1.125rem, 2.15vw, 1.75rem); font-weight: 700; font-variant-numeric: tabular-nums; }
+.contacts address { container-type: inline-size; font-style: normal; }
+.phones {
+  display: grid;
+  justify-items: start;
+  gap: 6px;
+  margin-bottom: var(--phone-block-gap);
+  font-size: max(1.25rem, 11cqi);
+  font-weight: 700;
+  line-height: 1.18;
+  font-variant-numeric: tabular-nums;
+}
 .phones a:hover { color: #ff6975; }
-.contacts .messengers, .work-hours { max-width: 330px; }
+.contacts address, .work-hours { max-width: 330px; }
 .messengers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
 .messengers .button { padding-inline: 10px; font-size: .9375rem; }
 .product-messengers { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }

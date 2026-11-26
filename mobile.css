@@ -169,8 +169,7 @@
   .contacts h2 { font-size: clamp(2.875rem, 11vw, 4.25rem); }
   .contacts-title-end { display: inline-block; white-space: nowrap; }
   .question-mark { overflow: visible; fill: var(--icon-red); stroke: var(--ink); stroke-width: 3; paint-order: stroke fill; }
-  .phones { font-size: clamp(1.4rem, 6vw, 2rem); }
-  .contacts .messengers, .work-hours { max-width: 440px; }
+  .contacts address, .work-hours { max-width: 440px; }
   .messengers .button { font-size: 1rem; }
   .work-hours h3 { font-size: 1.125rem; }
   .work-hours dl { font-size: 1rem; }

@@ -57,7 +57,7 @@ const maxPhone = document.querySelector('#max-phone');
 const maxStatus = document.querySelector('#max-status');
 const orderTelegram = document.querySelector('#order-telegram');
 const orderWhatsApp = document.querySelector('#order-whatsapp');
-const phoneNumber = maxPhone.value.replace(/\D/g, '');
+const phoneNumber = maxPhone.value.replace(/\D/g, '').replace(/^8(?=\d{10}$)/, '7');
 let catalogTransitioning = false;
 
 async function setCatalog(open) {
